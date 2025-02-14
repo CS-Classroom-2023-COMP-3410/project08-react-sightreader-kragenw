@@ -93,3 +93,129 @@ Rather than modifying the existing codebase incrementally, it is likely easier t
 - Running the project in development mode launches a React-based application  
 - The app successfully displays an ABC notation file and provides pitch detection  
 - The codebase is significantly simplified, containing only what is necessary for the core functionality  
+
+```
+project08-react-sightreader-kragenw
+├─ .devcontainer
+│  ├─ Dockerfile
+│  └─ devcontainer.json
+├─ README.md
+├─ npm-requirements.txt
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ css
+│  │  ├─ bootstrap.min.css
+│  │  ├─ flat-ui.min.css
+│  │  ├─ preface.css
+│  │  └─ sightreader.css
+│  ├─ fonts
+│  │  ├─ glyphicons
+│  │  │  ├─ flat-ui-pro-icons-regular.eot
+│  │  │  ├─ flat-ui-pro-icons-regular.svg
+│  │  │  ├─ flat-ui-pro-icons-regular.ttf
+│  │  │  ├─ flat-ui-pro-icons-regular.woff
+│  │  │  └─ selection.json
+│  │  └─ lato
+│  │     ├─ lato-black.eot
+│  │     ├─ lato-black.svg
+│  │     ├─ lato-black.ttf
+│  │     ├─ lato-black.woff
+│  │     ├─ lato-bold.eot
+│  │     ├─ lato-bold.svg
+│  │     ├─ lato-bold.ttf
+│  │     ├─ lato-bold.woff
+│  │     ├─ lato-bolditalic.eot
+│  │     ├─ lato-bolditalic.svg
+│  │     ├─ lato-bolditalic.ttf
+│  │     ├─ lato-bolditalic.woff
+│  │     ├─ lato-italic.eot
+│  │     ├─ lato-italic.svg
+│  │     ├─ lato-italic.ttf
+│  │     ├─ lato-italic.woff
+│  │     ├─ lato-light.eot
+│  │     ├─ lato-light.svg
+│  │     ├─ lato-light.ttf
+│  │     ├─ lato-light.woff
+│  │     ├─ lato-regular.eot
+│  │     ├─ lato-regular.svg
+│  │     ├─ lato-regular.ttf
+│  │     └─ lato-regular.woff
+│  ├─ img
+│  │  ├─ glyphicons-halflings-white.png
+│  │  ├─ glyphicons-halflings.png
+│  │  ├─ letter-b-icon.png
+│  │  ├─ letter-n-icon.png
+│  │  ├─ letter-r-icon.png
+│  │  ├─ letter-s-icon.png
+│  │  └─ letter-t-icon.png
+│  ├─ index.html
+│  ├─ js
+│  │  ├─ .DS_Store
+│  │  └─ ext
+│  │     ├─ .DS_Store
+│  │     ├─ abcjs_midi_6.0.0-beta.13-min.js
+│  │     ├─ abcjs_midi_6.0.0-beta.25-min.js
+│  │     ├─ application.js
+│  │     ├─ bootstrap.js
+│  │     ├─ bootstrap.min.js
+│  │     ├─ flat-ui.js
+│  │     ├─ flat-ui.min.js
+│  │     ├─ jquery-3.3.1.min.js
+│  │     ├─ jquery.js
+│  │     ├─ js.cookie.min.js
+│  │     ├─ ml5.min.js
+│  │     ├─ p5.dom.min.js
+│  │     ├─ p5.js
+│  │     ├─ p5.sound.min.js
+│  │     ├─ pitchdetector.js
+│  │     ├─ pitchdetectorcanvas.js
+│  │     ├─ popper.min.js
+│  │     └─ volume-meter.js
+│  └─ music
+│     ├─ beginner.pls
+│     ├─ cecilio-lesson1-open-strings.abc
+│     ├─ cecilio-lesson2-first-position.abc
+│     ├─ cecilio-lesson2-twinkle-twinkle-little-star.abc
+│     ├─ cecilio-lesson3-exercise-1.abc
+│     ├─ cecilio-lesson3-exercise-2.abc
+│     ├─ cecilio-lesson3-exercise-3.abc
+│     ├─ cecilio-lesson3-exercise-4.abc
+│     ├─ cecilio-lesson3-jingle-bells.abc
+│     ├─ cecilio-lesson3-mary-had-a-little-lamb.abc
+│     ├─ cecilio-lesson4-camptown-races.abc
+│     ├─ cecilio-lesson4-lightly-row.abc
+│     ├─ cecilio-lesson4-russian-dance-tune.abc
+│     ├─ cecilio-lesson5-eighth-notes.abc
+│     ├─ cecilio-lesson5-hungarian-folk-song-1.abc
+│     ├─ cecilio-lesson5-the-old-gray-goose.abc
+│     ├─ cecilio-lesson6-first-position-d-string.abc
+│     ├─ cecilio-lesson6-ode-to-joy.abc
+│     ├─ cecilio-lesson6-scherzando.abc
+│     ├─ cecilio-lesson7-can-can.abc
+│     ├─ cecilio-lesson7-country-gardens.abc
+│     ├─ cecilio-lesson7-gavotte.abc
+│     ├─ cecilio-lesson8-dixie.abc
+│     ├─ cecilio-lesson8-largo.abc
+│     ├─ hot-cross-buns.abc
+│     ├─ lesson1-open-string-exercise-1.abc
+│     ├─ lesson1-open-string-exercise-2.abc
+│     ├─ lesson1-open-string-exercise-3.abc
+│     ├─ lesson1-open-string-exercise-4.abc
+│     ├─ lesson1-open-string-exercise-5.abc
+│     ├─ lesson1-open-string-exercise-6.abc
+│     ├─ lesson2-1st-finger-exercise-1.abc
+│     ├─ lesson2-1st-finger-exercise-2.abc
+│     ├─ lesson2-1st-finger-exercise-3.abc
+│     ├─ lesson2-1st-finger-exercise-4.abc
+│     ├─ lesson2-1st-finger-exercise-5.abc
+│     └─ lesson2-1st-finger-exercise-6.abc
+├─ src
+│  ├─ App.jsx
+│  ├─ main.jsx
+│  ├─ pages
+│  │  └─ Index.jsx
+│  └─ sightreader.js
+└─ vite.config.js
+
+```
