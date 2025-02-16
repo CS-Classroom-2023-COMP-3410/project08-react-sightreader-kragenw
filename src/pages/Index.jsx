@@ -8,26 +8,13 @@ import Settings from "../components/Settings";
 import Playlist from "../components/Playlist";
 import Modal from "../components/Modal";
 
-// function Index() {
-//     return (
-//         <div className="container">
-//             <Header />
-//             <div className="container">
-//                 <StatusMessage />
-//                 <Controls />
-//                 <TextAreaContainer />
-//                 <GameDisplay />
-//                 <Settings />
-//                 <Playlist />
-//             </div>
 
-//             <Modal />
-//         </div>
 
-//     )
-// }
+import AudioControl from "../components/FunctionalityComponents/AudioControl";
+import FileLoader from "../components/FunctionalityComponents/FileLoader";
+import Playback from "../components/FunctionalityComponents/Playback";
+import UI from "../components/FunctionalityComponents/UI";
 
-// export default Index;
 
 
 function Index() {
@@ -41,6 +28,10 @@ function Index() {
       <Settings />
       <Playlist />
       <Modal />
+      {/* <AudioControl />
+      <FileLoader />
+      <Playback />
+      <UI /> */}
     </div>
   );
 }

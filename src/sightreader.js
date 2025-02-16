@@ -78,38 +78,38 @@ function clamp(val, min, max) {
     return val > max ? max : val < min ? min : val;
 }
 
-function is_auto_continue() {
-    return $('#' + auto_continue.id).is(':checked');
-}
+// function is_auto_continue() {
+//     return $('#' + auto_continue.id).is(':checked');
+// }
 
-function is_ignore_duration() {
-    return $('#' + ignore_duration.id).is(':checked');
-}
+// function is_ignore_duration() {
+//     return $('#' + ignore_duration.id).is(':checked');
+// }
 
 // Compare the note expected to be played against the note currently detected on the mic and update score.
-function check_note() {
-    if (isNaN(current_midi_number)) {
-        current_midi_number = 0;
-    }
-    if (isNaN(expected_midi_number)) {
-        expected_midi_number = 0;
-    }
-    if(is_ignore_duration()){
-        // If we're ignoring duration, then only increase our correct note count if the note is met at least once.
-        if(!new_note_checked){
-            new_note_checked = true;
-            notes_checked_count += 1;
-        }
-        if(!new_note_checked_and_found && expected_midi_number == current_midi_number){
-            new_note_checked_and_found = true;
-            notes_checked_correct_count += 1;
-        }
-    }else{
-        // Otherwise, assume the note must be met throughout the entire duration.
-        notes_checked_correct_count += expected_midi_number == current_midi_number;
-        notes_checked_count += 1;
-    }
-}
+// function check_note() {
+//     if (isNaN(current_midi_number)) {
+//         current_midi_number = 0;
+//     }
+//     if (isNaN(expected_midi_number)) {
+//         expected_midi_number = 0;
+//     }
+//     if(is_ignore_duration()){
+//         // If we're ignoring duration, then only increase our correct note count if the note is met at least once.
+//         if(!new_note_checked){
+//             new_note_checked = true;
+//             notes_checked_count += 1;
+//         }
+//         if(!new_note_checked_and_found && expected_midi_number == current_midi_number){
+//             new_note_checked_and_found = true;
+//             notes_checked_correct_count += 1;
+//         }
+//     }else{
+//         // Otherwise, assume the note must be met throughout the entire duration.
+//         notes_checked_correct_count += expected_midi_number == current_midi_number;
+//         notes_checked_count += 1;
+//     }
+// }
 
 function is_startable() {
     return source_stream && tunebook && tunebook[0].lines.length > 0;
@@ -221,36 +221,36 @@ function refresh_countdown() {
     }
 }
 
-function load_playlist_file(filename) {
-    console.log()
-    $.ajax({
-        url: '../music/' + filename,
-        dataType: 'json',
-        success: function (data, textStatus, jqXHR) {
-            console.log('Loading playlist file: ' + filename)
-            var playlist = $('#' + playlist_display.id);
-            clear_playlist();
-            playlist_files = data;
-            playlist_index = 0;
-            for (var i = 0; i < data.length; i += 1) {
-                playlist.append('<li class="list-group-item" data-playlist-index="' + i + '">' + data[i] + '</li>');
-            }
-            if (playlist_files) {
-                update_playlist();
-            }
-            $('#playlist li').click(function () {
-                var el = $(this);
-                var index = parseInt(el.data('playlist-index'));
-                // console.log('Loading index ' + index);
-                goto_playlist_index(index);
-            });
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            report_status('Unable to load playlist file: ' + filename);
-            update_start_button();
-        },
-    });
-}
+// function load_playlist_file(filename) {
+//     console.log()
+//     $.ajax({
+//         url: '../music/' + filename,
+//         dataType: 'json',
+//         success: function (data, textStatus, jqXHR) {
+//             console.log('Loading playlist file: ' + filename)
+//             var playlist = $('#' + playlist_display.id);
+//             clear_playlist();
+//             playlist_files = data;
+//             playlist_index = 0;
+//             for (var i = 0; i < data.length; i += 1) {
+//                 playlist.append('<li class="list-group-item" data-playlist-index="' + i + '">' + data[i] + '</li>');
+//             }
+//             if (playlist_files) {
+//                 update_playlist();
+//             }
+//             $('#playlist li').click(function () {
+//                 var el = $(this);
+//                 var index = parseInt(el.data('playlist-index'));
+//                 // console.log('Loading index ' + index);
+//                 goto_playlist_index(index);
+//             });
+//         },
+//         error: function (jqXHR, textStatus, errorThrown) {
+//             report_status('Unable to load playlist file: ' + filename);
+//             update_start_button();
+//         },
+//     });
+// }
 
 function load_abc_file(filename) {
     if (!filename) {
@@ -433,20 +433,20 @@ function stop_mic() {
     stop_pitch_detector();
 }
 
-function start_note_checker() {
-    note_checker_id = setInterval(check_note, 100);
-}
+// function start_note_checker() {
+//     note_checker_id = setInterval(check_note, 100);
+// }
 
-function stop_note_checker() {
-    if (note_checker_id) {
-        clearInterval(note_checker_id);
-    }
-    if (pitch_checker_id) {
-        clearInterval(pitch_checker_id);
-    }
-    note_checker_id = null;
-    pitch_checker_id = null;
-}
+// function stop_note_checker() {
+//     if (note_checker_id) {
+//         clearInterval(note_checker_id);
+//     }
+//     if (pitch_checker_id) {
+//         clearInterval(pitch_checker_id);
+//     }
+//     note_checker_id = null;
+//     pitch_checker_id = null;
+// }
 
 function event_callback(event) {
     if (current_event) {
@@ -493,11 +493,12 @@ function event_callback(event) {
     }
 }
 
-function auto_start() {
-    console.log('Auto-starting.');
-    start_button.click();
-}
-window.auto_start = auto_start;
+// function auto_start() {
+//     console.log('Auto-starting.');
+//     start_button.click();
+// }
+
+// window.auto_start = auto_start;
 
 function start() {
     console.log('Starting...');
@@ -529,9 +530,9 @@ function start() {
     $('#notation').css('opacity', 1);
 }
 
-function get_score_percent() {
-    return parseInt(Math.round((notes_checked_correct_count / notes_checked_count) * 100));
-}
+// function get_score_percent() {
+//     return parseInt(Math.round((notes_checked_correct_count / notes_checked_count) * 100));
+// }
 
 function reset_score_display_style() {
     var el = $('#' + current_score_display.id);
@@ -628,70 +629,70 @@ function update_scroll() {
     $('#' + notation_display.id + ' svg').css('transform-origin-x', scroll_offset);
 }
 
-function goto_playlist_index(i) {
-    var _playlist_index = playlist_index;
-    playlist_index = i;
-    playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
-    if (_playlist_index != playlist_index) {
-        update_playlist();
-    }
-}
+// function goto_playlist_index(i) {
+//     var _playlist_index = playlist_index;
+//     playlist_index = i;
+//     playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
+//     if (_playlist_index != playlist_index) {
+//         update_playlist();
+//     }
+// }
 
-function at_playlist_end() {
-    return !playlist_files.length || playlist_index == playlist_files.length - 1;
-}
+// function at_playlist_end() {
+//     return !playlist_files.length || playlist_index == playlist_files.length - 1;
+// }
 
-function increment_playlist() {
-    var _playlist_index = playlist_index;
-    playlist_index += 1;
-    playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
-    if (_playlist_index != playlist_index) {
-        update_playlist();
-    }
-}
-window.increment_playlist = increment_playlist;
+// function increment_playlist() {
+//     var _playlist_index = playlist_index;
+//     playlist_index += 1;
+//     playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
+//     if (_playlist_index != playlist_index) {
+//         update_playlist();
+//     }
+// }
+// window.increment_playlist = increment_playlist;
 
-function decrement_playlist() {
-    var _playlist_index = playlist_index;
-    playlist_index -= 1;
-    playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
-    if (_playlist_index != playlist_index) {
-        update_playlist();
-    }
-}
+// function decrement_playlist() {
+//     var _playlist_index = playlist_index;
+//     playlist_index -= 1;
+//     playlist_index = clamp(playlist_index, 0, playlist_files.length - 1);
+//     if (_playlist_index != playlist_index) {
+//         update_playlist();
+//     }
+// }
 
-function clear_playlist() {
-    playlist_files = [];
-    playlist_index = 0;
-    var playlist = $('#' + playlist_display.id);
-    playlist.empty();
-}
+// function clear_playlist() {
+//     playlist_files = [];
+//     playlist_index = 0;
+//     var playlist = $('#' + playlist_display.id);
+//     playlist.empty();
+// }
 
-function update_playlist() {
-    notes_checked_correct_count = 0;
-    notes_checked_count = 0;
-    reset_score_display_style();
-    reset_current_note_display_style();
-    $('li').removeClass('active');
-    $('li[data-playlist-index=' + playlist_index + ']').addClass('active');
-    var fn = playlist_files[playlist_index];
-    load_abc_file(fn);
-    if (playlist_files.length) {
-        current_playlist_position_display.textContent = '' + (playlist_index + 1) + '/' + playlist_files.length;
-    } else {
-        current_playlist_position_display.textContent = '';
-    }
-}
-window.update_playlist = update_playlist;
+// function update_playlist() {
+//     notes_checked_correct_count = 0;
+//     notes_checked_count = 0;
+//     reset_score_display_style();
+//     reset_current_note_display_style();
+//     $('li').removeClass('active');
+//     $('li[data-playlist-index=' + playlist_index + ']').addClass('active');
+//     var fn = playlist_files[playlist_index];
+//     load_abc_file(fn);
+//     if (playlist_files.length) {
+//         current_playlist_position_display.textContent = '' + (playlist_index + 1) + '/' + playlist_files.length;
+//     } else {
+//         current_playlist_position_display.textContent = '';
+//     }
+// }
+// window.update_playlist = update_playlist;
 
 
-auto_continue.addEventListener('click', async (e) => {
-    Cookies.set(auto_continue.id, is_auto_continue() ? 1 : 0);
-});
+// auto_continue.addEventListener('click', async (e) => {
+//     Cookies.set(auto_continue.id, is_auto_continue() ? 1 : 0);
+// });
 
-ignore_duration.addEventListener('click', async (e) => {
-    Cookies.set(ignore_duration.id, is_ignore_duration() ? 1 : 0);
-});
+// ignore_duration.addEventListener('click', async (e) => {
+//     Cookies.set(ignore_duration.id, is_ignore_duration() ? 1 : 0);
+// });
 
 
 

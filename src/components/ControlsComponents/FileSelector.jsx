@@ -5,9 +5,9 @@ function FileSelector() {
     <>
       <label htmlFor="file">File:</label>
       <select id="file">
-        <option value="">---Custom ABC---</option>
+        {/* <option value="">---Custom ABC---</option> */}
         {[
-          "beginner.pls",
+          // "beginner.pls",
           "cecilio-lesson1-open-strings.abc",
           "cecilio-lesson2-first-position.abc",
           "cecilio-lesson2-twinkle-twinkle-little-star.abc",
